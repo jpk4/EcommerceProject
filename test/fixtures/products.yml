@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  sku: 1
+  qty_on_hand: 1
+  current_price: 9.99
+  description: MyString
+  image: MyString
+  category: one
+
+two:
+  product_id: 1
+  sku: 1
+  qty_on_hand: 1
+  current_price: 9.99
+  description: MyString
+  image: MyString
+  category: two
