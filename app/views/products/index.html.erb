@@ -4,6 +4,6 @@
   <p>There are no products available.</p>
 <% else %>
   <% @products.each do |product| %>
-    <h4><%= product.name %> - SKU:<%= product.sku %> - Price:$<%= product.current_price %> <h4>
+    <h4><%= link_to product.name, product %></h4>
   <% end %>
 <% end %>

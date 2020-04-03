@@ -3,9 +3,7 @@
 <% if @category.products.empty? %>
   <p>There are no products in this category</p>
 <% else %>
-   <ul>
-    <% @category.products.each do |product| %>
-      <li><%= link_to product.name, product %></li>
-    <% end %>
-  </ul>
+  <% @category.products.each do |product| %>
+    <h4><%= link_to product.name, product %></h4>
+  <% end %>
 <% end %>
