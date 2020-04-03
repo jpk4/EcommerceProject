@@ -1,2 +1,8 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h2><%= @product.name %></h2>
+<h4>SKU: <%= @product.sku %></h4>
+<h4>Price: $<%= @product.current_price%></h4>
+<h4>Description: <%= @product.description %></h4>
+<h4>In stock: <%= @product.qty_on_hand%></h4>
+<% if @product.image.present? %>
+  <%= image_tag @product.image %>
+<% end %>

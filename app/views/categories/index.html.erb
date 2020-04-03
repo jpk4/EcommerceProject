@@ -3,7 +3,6 @@
   <p>There are no categories available.</p>
 <% else %>
   <% @categories.each do |category| %>
-    <h4><%= category.name %><h4>
-    <p><%= link_to "#{category.name}", category %></p>
+    <h4><%= link_to "#{category.name}", category %></h4>
   <% end %>
 <% end %>
