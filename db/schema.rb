@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_171046) do
+ActiveRecord::Schema.define(version: 2020_04_03_171148) do
 
   create_table "customers", force: :cascade do |t|
     t.integer "customer_num"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2020_04_03_171046) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "delivery_people", force: :cascade do |t|
+    t.integer "employee_id"
+    t.string "name"
+    t.datetime "delivery_date"
+    t.integer "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_delivery_people_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -45,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_171046) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "delivery_people", "orders"
   add_foreign_key "orders", "customers"
   add_foreign_key "orders", "payments"
 end

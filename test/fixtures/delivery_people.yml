@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  name: MyString
+  delivery_date: 2020-04-03 12:11:48
+  order: one
+
+two:
+  employee_id: 1
+  name: MyString
+  delivery_date: 2020-04-03 12:11:48
+  order: two
