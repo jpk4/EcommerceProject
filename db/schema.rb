@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_170813) do
+ActiveRecord::Schema.define(version: 2020_04_03_170943) do
 
   create_table "customers", force: :cascade do |t|
     t.integer "customer_num"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2020_04_03_170813) do
     t.string "province"
     t.string "user_name"
     t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "card_number"
+    t.string "card_type"
+    t.string "billing_address"
+    t.integer "expiry_month"
+    t.integer "expiry_year"
+    t.integer "cvv_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
