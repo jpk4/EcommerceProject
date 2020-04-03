@@ -1,2 +1,8 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h2>Products</h2>
+<% if @products.empty? %>
+  <p>There are no products available.</p>
+<% else %>
+  <% @products.each do |product| %>
+    <h4><%= product.name %> - SKU:<%= product.sku %> - Price:$<%= product.current_price %> <h4>
+  <% end %>
+<% end %>
