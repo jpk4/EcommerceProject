@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'delivery_persons/index'
   get 'payments/index'
   get 'customers/index'
   get 'orders/index'
