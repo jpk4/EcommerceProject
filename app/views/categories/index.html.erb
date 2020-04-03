@@ -1,2 +1,9 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h2>Categories</h2>
+<% if @categories.empty? %>
+  <p>There are no categories available.</p>
+<% else %>
+  <% @categories.each do |category| %>
+    <h4><%= category.name %><h4>
+    <p><%= link_to "#{category.name}", category %></p>
+  <% end %>
+<% end %>

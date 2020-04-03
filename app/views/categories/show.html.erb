@@ -1,0 +1,10 @@
+<h2><% @category.name %></h2>
+<% if @category.products.empty? %>
+  <p>There are no products in the category</p>
+<% else %>
+   <ul>
+    <% @category.products.each do |product| %>
+      <li><%= link_to product.name, product %></li>
+    <% end %>
+  </ul>
+<% end %>
