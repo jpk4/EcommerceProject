@@ -2,7 +2,20 @@
 <% if @category.products.empty? %>
   <p>There are no products in this category</p>
 <% else %>
+  <div class="columns is-multiline">
   <% @category.products.each do |product| %>
-    <h4><%= link_to product.name, product %></h4>
+    <div class="column is-3">
+      <div class="card">
+      <div class="card-image">
+        <figure class="image">
+          <%=image_tag('placeholder-300x300.jpg')%>
+        </figure>
+      </div>
+        <div class="card-content">
+          <h4 class="title is-5"><%= link_to product.name, product %></h4>
+          <p class="title is-6">$<%= product.current_price%><%= product.size %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>
