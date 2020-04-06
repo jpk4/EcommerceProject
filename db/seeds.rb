@@ -49,11 +49,13 @@ products.each do |product|
   description = product['description']
   size = product['size']
   sku = product['sku']
+  sku = sku[6..-1]
   qty = rand(150)
+  image = 'placeholder-300x300.jpg'
 
   category = Category.where(name: parent).first_or_create
   sub = category.sub_categories.where(name: sub_category).first_or_create
-  sub.products.create(name: name, current_price: price, size: size, sku: sku, qty_on_hand: qty, description: description)
+  sub.products.create(name: name, current_price: price, size: size, sku: sku, qty_on_hand: qty, image: image, description: description)
 end
 
 puts "Created #{Category.count} Categories."
