@@ -2,22 +2,22 @@
 <% if @products.empty? %>
   <p>There are no products available.</p>
 <% else %>
-  <%= paginate @products, outer_window: 1, window: 2 %>
+  <span class="right-align"><%= paginate @products, outer_window: 1, window: 2 %></span>
   <div class="row">
   <% @products.each do |product| %>
     <div class="col s12 m3">
-      <div class="card small">
-        <div class="card-image waves-effect waves-block waves-light">
+      <div class="card small hoverable">
+        <div class="card-image">
           <%=image_tag('placeholder-300x300.jpg')%>
         </div>
         <div class="card-content">
           <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
-          <p>$<%= product.current_price%><%= product.size %></p>
+          <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
         </div>
       </div>
     </div>
   <% end %>
   </div>
   <%= paginate @products, outer_window: 1, window: 2 %>
-  <%= page_entries_info @products, entry_name: 'item' %>
+ <%= page_entries_info @products, entry_name: 'item' %>
 <% end %>

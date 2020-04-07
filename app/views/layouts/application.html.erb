@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -15,15 +16,16 @@
   </head>
 
   <body>
+    <main>
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper teal darken-4">
-          <a href="#" class="brand-logo left">Fresh Market</a>
+          <a href="#" class="brand-logo left syncofont">Fresh Market</a>
           <ul id="navbar-items" class="right hide-on-med-and-down">
             <li><a class="waves-effect waves-light btn green lighten-1" href="/">Home</a></li>
-            <li><a class="waves-effect waves-light btn green lighten-1" href="">About Us</a></li>
+            <li><a class="waves-effect waves-light btn green lighten-1" href="/about">About Us</a></li>
             <li><a class="waves-effect waves-light btn green lighten-1" href="/products">Products</a></li>
-            <li><a class="waves-effect waves-light btn green lighten-1" href="">Contact Us</a></li>
+            <li><a class="waves-effect waves-light btn green lighten-1" href="/contact">Contact Us</a></li>
           </ul>
         </div>
       </nav>
@@ -31,5 +33,30 @@
     <div class="container">
         <%= yield %>
     </div>
+    </main>
+    <footer class="page-footer teal darken-3">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="green-text text-lighten-3 syncofont">Fresh Market</h5>
+            <p class="grey-text text-lighten-4">"Fresh, locally sourced food for your family."</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="green-text text-lighten-3">Store Hours</h5>
+            <ul>
+              <li><p class="grey-text text-lighten-3">Monday-Friday: 7am-11pm</p></li>
+              <li><p class="grey-text text-lighten-3">Saturday: 7am-11pm</p></li>
+              <li><p class="grey-text text-lighten-3">Sunday: 9am-6pm</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright teal darken-4">
+        <div class="container">
+        © 2020 Copyright JPK Web Solutions
+        <a class="grey-text text-lighten-4 right" href="/contact"><i class="material-icons right">call</i>Contact Us: 1-877-555-5555</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

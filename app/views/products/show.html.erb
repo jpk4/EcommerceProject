@@ -1,8 +1,22 @@
-<h2><%= @product.name %></h2>
-<h4>SKU: <%= @product.sku %></h4>
-<h4>Price: $<%= @product.current_price%><%= @product.size %></h4>
-<h4>Description: <%= @product.description %></h4>
-<h4>In stock: <%= @product.qty_on_hand%></h4>
-<% if @product.image.present? %>
-  <%= image_tag @product.image %>
-<% end %>
+<div class="row">
+  <div class="col s9 offset-s1">
+  <div class="card horizontal">
+    <div class='card-image'>
+      <% if @product.image.present? %>
+        <%= image_tag @product.image %>
+      <% end %>
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h5 class="header"><%= @product.name %></h5>
+        <span class="permfont">$<%= @product.current_price%> </span><%= @product.size %>
+        <p>SKU: <%= @product.sku %></p>
+        <p>Description: <%= @product.description %></p>
+        <p>In stock: <%= @product.qty_on_hand%></p>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

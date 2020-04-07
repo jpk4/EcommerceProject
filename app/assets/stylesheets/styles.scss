@@ -1,3 +1,14 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+    background-color: #e8f5e9;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 a:link {
   text-decoration: none;
 }
@@ -8,13 +19,7 @@ a:link {
 }
 
 nav .brand-logo {
-  font-family: 'Syncopate', sans-serif;
-  color: white;
   padding-left: 1rem;
-}
-
-body {
-  background-color: #e8f5e9;
 }
 
 .pagination{
@@ -24,5 +29,26 @@ body {
 }
 
 .pagination li.active {
-    background-color: #004d40;
+    background-color: #66bb6a;
+}
+
+a, a:hover {
+  color: #00695c;
+}
+
+p a:hover {
+  font-weight:bold;
+}
+
+.syncofont {
+  font-family: 'Syncopate', sans-serif;
+  color: white;
+}
+
+.permfont {
+  font-family: 'Shadows Into Light Two', cursive;
+  color: #66bb6a;
+  font-size: 20px;
+  font-weight:bold;
+  letter-spacing: 0.15rem;
 }

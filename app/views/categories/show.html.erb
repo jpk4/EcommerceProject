@@ -1,17 +1,17 @@
-<h2><%= @category.name %></h2>
+<h4><%= @category.name %></h4>
 <% if @category.products.empty? %>
   <p>There are no products in this category</p>
 <% else %>
   <div class="row">
   <% @category.products.each do |product| %>
     <div class="col s12 m3">
-      <div class="card small">
-        <div class="card-image waves-effect waves-block waves-light">
+      <div class="card small hoverable">
+        <div class="card-image">
           <%=image_tag('placeholder-300x300.jpg')%>
         </div>
         <div class="card-content">
           <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
-          <p>$<%= product.current_price%><%= product.size %></p>
+          <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
         </div>
       </div>
     </div>
