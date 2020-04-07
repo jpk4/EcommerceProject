@@ -5,9 +5,9 @@
   <div class="row">
   <% @category.products.each do |product| %>
     <div class="col s12 m3">
-      <div class="card small hoverable">
+      <div class="card medium hoverable">
         <div class="card-image">
-          <%=image_tag('placeholder-300x300.jpg')%>
+          <%= image_tag product.image %>
         </div>
         <div class="card-content">
           <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>

@@ -27,7 +27,8 @@ products.each do |product|
   sku = product['sku']
   sku = sku[6..-1]
   qty = rand(150)
-  image = 'placeholder-300x300.jpg'
+  image = product['image']
+  puts sku
 
   category = Category.where(name: parent).first_or_create
   sub = category.sub_categories.where(name: sub_category).first_or_create
