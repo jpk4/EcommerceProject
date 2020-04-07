@@ -1,3 +1,17 @@
-body {
-  padding: 1.5rem;
+a:link {
+  text-decoration: none;
 }
+
+.cont {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+a .brand-logo {
+  color: white;
+}
+
+li a,li a:link,li a:visited {
+  color: #e8f5e9;
+}
+
