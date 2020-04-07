@@ -1,21 +1,23 @@
-<h2>Products</h2>
+<h4>Products</h4>
 <% if @products.empty? %>
   <p>There are no products available.</p>
 <% else %>
-  <div class="columns is-multiline">
+  <%= paginate @products, outer_window: 1, window: 2 %>
+  <div class="row">
   <% @products.each do |product| %>
-    <div class="column is-3">
-      <div class="card">
-      <div class="card-image">
-        <figure class="image">
-          <%=image_tag('placeholder-600x600.jpg')%>
-        </figure>
-      </div>
+    <div class="col s12 m3">
+      <div class="card small">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%=image_tag('placeholder-300x300.jpg')%>
+        </div>
         <div class="card-content">
-          <p class="title is-6"><%= link_to product.name, product %></h6>
-          <p class="title is-6">$<%= product.current_price%><%= product.size %></p>
+          <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
+          <p>$<%= product.current_price%><%= product.size %></p>
         </div>
       </div>
     </div>
   <% end %>
+  </div>
+  <%= paginate @products, outer_window: 1, window: 2 %>
+  <%= page_entries_info @products, entry_name: 'item' %>
 <% end %>
