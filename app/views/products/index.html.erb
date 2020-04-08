@@ -6,23 +6,9 @@
   <% else %>
     <span class="right-align"><%= paginate @products, outer_window: 1, window: 2 %></span>
     <div class="row">
-    <% @products.each do |product| %>
-      <div class="col s12 m2">
-        <div class="card medium hoverable">
-          <div class="card-image products">
-            <%=image_tag product.image%>
-          </div>
-          <div class="card-content">
-            <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
-            <div class="card-action">
-              <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+      <%= render partial: 'product', collection: @products %>
     </div>
     <%= paginate @products, outer_window: 1, window: 2 %>
-  <%= page_entries_info @products, entry_name: 'item' %>
+    <%= page_entries_info @products, entry_name: 'item' %>
   <% end %>
 </div>
