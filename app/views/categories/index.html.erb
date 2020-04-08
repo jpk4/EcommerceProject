@@ -1,32 +1,37 @@
-<%# <h4>Categories</h4> %>
-<% if @categories.empty? %>
-  <p>There are no categories available.</p>
-<% else %>
-  <div class="row">
-  <% @categories.each do |category| %>
-    <% if category.parent_category_id.nil? %>
-
-      <div class="col s12 m4">
-        <div class="card small green lighten-1 hoverable">
-          <div class="card-image waves-effect waves-block waves-light">
-            <div class="activator"><%= image_tag category.image%></div>
-          </div>
-          <div class="card-content white">
-            <span class="card-title activator grey-text text-darken-4"><%=category.name%><i class="material-icons right">expand_less</i></span>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4"><%=category.name%> Categories<i class="material-icons right">close</i></span>
-              <% category.sub_categories.each do |sub_category|%>
-                <p><%= link_to "#{sub_category.name}", sub_category%></p>
-              <%end%>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper teal darken-3 navpad">
+    </div>
+  </nav>
+</div>
+<div class="container">
+  <% if @categories.empty? %>
+    <p>There are no categories available.</p>
+  <% else %>
+    <div class="row">
+    <% @categories.each do |category| %>
+      <% if category.parent_category_id.nil? %>
+        <div class="col s12 m4">
+          <div class="card small green lighten-1 hoverable">
+            <div class="card-image waves-effect waves-block waves-light">
+              <div class="activator"><%= image_tag category.image%></div>
+            </div>
+            <div class="card-content white">
+              <span class="card-title activator grey-text text-darken-4"><%=category.name%><i class="material-icons right">expand_less</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><%=category.name%> Categories<i class="material-icons right">close</i></span>
+                <% category.sub_categories.each do |sub_category|%>
+                  <p><%= link_to "#{sub_category.name}", sub_category%></p>
+                <%end%>
+            </div>
           </div>
         </div>
-      </div>
-
+      <% end %>
     <% end %>
+    </div>
   <% end %>
-  </div>
-<% end %>
+</div>
 
 
 

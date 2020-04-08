@@ -2,7 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-    background-color: #e8f5e9;
+  background-color: #e8f5e9;
 }
 
 main {
@@ -19,6 +19,10 @@ a:link {
 }
 
 nav .brand-logo {
+  padding-left: 1rem;
+}
+
+.navpad {
   padding-left: 1rem;
 }
 
@@ -40,6 +44,10 @@ a, a:hover {
   color: #00695c;
 }
 
+.breadcrumb {
+  color: #66bb6a;
+}
+
 p a:hover {
   font-weight:bold;
 }
@@ -52,7 +60,12 @@ p a:hover {
 .permfont {
   font-family: 'Shadows Into Light Two', cursive;
   color: #66bb6a;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight:bold;
   letter-spacing: 0.15rem;
 }
+
+.products{
+  padding: 0.5rem;
+}
+

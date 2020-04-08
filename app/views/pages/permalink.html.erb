@@ -1,4 +1,14 @@
-<h4><%= @page.title %></h4>
-<article>
-  <%= @page.content %>
-</article>
+<nav>
+  <div class="nav-wrapper teal darken-3 navpad" >
+    <div class="col s12">
+      <a href="/" class="breadcrumb">Home</a>
+      <a href="/<%= @page.permalink %>" class="breadcrumb"><%= @page.title %></a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h4><%= @page.title %></h4>
+  <article>
+    <%= @page.content %>
+  </article>
+</div>
