@@ -1,13 +1,4 @@
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper teal darken-3 navpad">
-      <div class="col s12">
-        <a href="/" class="breadcrumb">Home</a>
-        <a href="#!" class="breadcrumb"><%= @category.name %></a>
-      </div>
-    </div>
-  </nav>
-</div>
+<%= render partial: 'layouts/breadcrumb_nav', object: @category, locals: {href: "", location_title:  @category.name, show_product: false}%>
 <div class="container">
   <h4 class="center-align"><%= @category.name %></h4>
   <% if @category.products.empty? %>

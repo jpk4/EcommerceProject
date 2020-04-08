@@ -1,0 +1,13 @@
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper teal darken-3 navpad">
+      <div class="col s12">
+        <a href="/" class="breadcrumb">Home</a>
+        <a href="<%= href %>" class="breadcrumb"><%= location_title %></a>
+        <% if show_product %>
+          <a href="#" class="breadcrumb"><%= @product.name %></a>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</div>
