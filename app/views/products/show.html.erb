@@ -14,10 +14,15 @@
         <div class="card-stacked">
           <div class="card-content">
             <h5 class="header"><%= @product.name %></h5>
-            <span class="permfont">$<%= @product.current_price%> </span><%= @product.size %>
-            <p>SKU: <%= @product.sku %></p>
-            <p>Description: <%= @product.description %></p>
-            <p>In stock: <%= @product.qty_on_hand%></p>
+            <% if @product.sales_price.nil? %>
+              <span class="permfont">$<%= @product.current_price%> </span><%= @product.size %>
+            <% else %>
+              <span class="sale">$<%= @product.sales_price%> </span><%= @product.size %>
+              <p class="grey-text text-lighten-1">Reg: $<%= @product.current_price%></p>
+            <% end %>
+            <p class="padding">SKU: <%= @product.sku %></p>
+            <p class="padding">Description: <%= @product.description %></p>
+            <p class="padding">In stock: <%= @product.qty_on_hand%></p>
           </div>
         </div>
       </div>

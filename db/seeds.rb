@@ -14,6 +14,10 @@ Order.destroy_all
 Customer.destroy_all
 Payment.destroy_all
 
+def random_numbers(size, upper)
+  array = (1..upper).to_a.sample(size)
+end
+
 csv_file = Rails.root + 'db/groceries.csv'
 products = CSV.parse(File.read(csv_file), headers: true)
 
@@ -28,11 +32,19 @@ products.each do |product|
   sku = sku[6..-1]
   qty = rand(150)
   image = product['image']
-  puts sku
 
   category = Category.where(name: parent).first_or_create
   sub = category.sub_categories.where(name: sub_category).first_or_create
   sub.products.create(name: name, current_price: price, size: size, sku: sku, qty_on_hand: qty, image: image, description: description)
+end
+
+on_sale_ids = random_numbers(products.count * 0.25, 1000)
+
+on_sale_ids.each do |on_sale|
+  product = Product.find_by(id: on_sale)
+  current_price = product.current_price
+  sales_price = (current_price - (current_price * 0.15)).round(2)
+  product.update(sales_price: sales_price)
 end
 
 puts "Created #{Category.count} Categories."
