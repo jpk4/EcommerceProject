@@ -14,7 +14,11 @@
         <div class="col s12 m4">
           <div class="card small green lighten-1 hoverable">
             <div class="card-image waves-effect waves-block waves-light">
-              <div class="activator"><%= image_tag category.image%></div>
+              <% if category.image.present? %>
+                <div class="activator"><%= image_tag category.image%></div>
+              <% else %>
+                <div class="activator"><%= image_tag('placeholder-300x300.jpg')%></div>
+              <% end %>
             </div>
             <div class="card-content white">
               <span class="card-title activator grey-text text-darken-4"><%=category.name%><i class="material-icons right">expand_less</i></span>
