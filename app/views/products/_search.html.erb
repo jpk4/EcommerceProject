@@ -5,6 +5,7 @@
     </div>
     <div class="file-path-wrapper">
       <%= text_field_tag(:search_term, nil, class: 'input', placeholder: 'Search Products') %>
+      <%= select_tag "search_id", options_from_collection_for_select(Category.where.not(parent_category_id: nil).order(:name), "id", "name"), prompt: "Filter By Category" %>
     </div>
   </div>
 <% end %>

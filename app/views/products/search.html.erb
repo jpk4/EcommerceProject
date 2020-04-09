@@ -4,11 +4,13 @@
 <div class="container">
   <h4 class="center-align">Products</h4>
   <% if @products.empty? %>
-    <p>There are no products available for the search term "<%= params[:search_term] %>.</p>
+    <p>There are no products available for the search term "<%= params[:search_term] %>".</p>
   <% else %>
-    <p>
-      Search term "<%= params[:search_term] %>".
-    </p>
+    <% if params[:search_id].empty?%>
+      <p>Search term "<%= params[:search_term] %>".</p>
+    <% else %>
+      <p>Search term "<%= params[:search_term] %>" in <%=@category_name.name%>.</p>
+    <% end %>
     <%= page_entries_info @products, entry_name: 'item' %>
     <span class="right-align"><%= paginate @products, outer_window: 1, window: 2 %></span>
     <div class="row">

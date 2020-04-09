@@ -11,6 +11,11 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.where('name LIKE ? OR description LIKE ?', "%#{params[:search_term]}%", "%#{params[:search_term]}%").page(params[:page])
+    if params[:search_id].empty?
+      @products = Product.where('name LIKE ? OR description LIKE ?', "%#{params[:search_term]}%", "%#{params[:search_term]}%").page(params[:page])
+    else
+      @products = Product.where('(name LIKE ? OR description LIKE ?) AND products.category_id = ?', "%#{params[:search_term]}%", "%#{params[:search_term]}%", params[:search_id]).order(:name).page(params[:page])
+      @category_name = Category.find(params[:search_id])
+    end
   end
 end
