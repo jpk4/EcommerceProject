@@ -21,6 +21,7 @@ a:link {
 nav .brand-logo {
   padding-left: 1rem;
   color: #66bb6a;
+  text-shadow: 1px 1px #616161;
 }
 
 .navpad {
@@ -30,6 +31,7 @@ nav .brand-logo {
 
 .container {
   margin-top: 2rem;
+  width: 85%;
 }
 
 .pagination{
@@ -85,4 +87,16 @@ p a:hover {
 
 .padding {
   padding-top: 1rem;
+}
+
+// .index {
+//   min-height: 425px;
+// }
+
+.cc {
+  height: 150px;
+}
+
+.card-action {
+  height:90px;
 }

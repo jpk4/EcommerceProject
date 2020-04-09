@@ -1,19 +1,26 @@
 <div class="col s12 m2">
-  <div class="card medium hoverable">
+  <div class="card index">
     <div class="card-image products">
       <%=image_tag product.image%>
+      <a class="btn-floating halfway-fab waves-effect waves-light green lighten-1 hoverable"><i class="material-icons">add_shopping_cart</i></a>
     </div>
-    <div class="card-content">
+    <div class="card-content cc">
       <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
-      <div class="card-action">
-        <% if product.sales_price.nil? %>
-          <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
+        <% if @cart.include?(product)%>
+        <%= button_to 'Remove From Cart', remove_from_cart_path(product), method: :delete %>
         <% else %>
-          <span class="sale">$<%= product.sales_price%> </span><%= product.size %>
-          <p class="grey-text text-lighten-1 right-align">Reg: $<%=product.current_price%></p>
+        <%= button_to 'Add to Cart', add_to_cart_path(product), method: :post %>
         <% end %>
-      </div>
+    </div>
+    <div class="card-action">
+      <% if product.sales_price.nil? %>
+        <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
+      <% else %>
+        <span class="sale">$<%= product.sales_price%> </span><%= product.size %>
+        <p class="grey-text text-lighten-1 right-align">Reg: $<%=product.current_price%></p>
+      <% end %>
     </div>
   </div>
 </div>
+
 
