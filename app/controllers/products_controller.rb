@@ -18,4 +18,12 @@ class ProductsController < ApplicationController
       @category_name = Category.find(params[:search_id])
     end
   end
+
+  def filter
+    @products = if params[:filter_id] == '1'
+                  Product.where.not(sales_price: nil).page(params[:page])
+                else
+                  Product.where(created_at: (Time.now.midnight - 3.day)..(Time.now.midnight + 1.day)).page(params[:page])
+                end
+  end
 end
