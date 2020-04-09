@@ -4,6 +4,9 @@
     </div>
   </nav>
 </div>
+<div class="search container">
+  <%= render partial: 'products/search'%>
+</div>
 <div class="container">
   <% if @categories.empty? %>
     <p>There are no categories available.</p>

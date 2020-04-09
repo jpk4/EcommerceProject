@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources 'orders', only: %i[index]
 
   get 'pages/show'
+  get 'search', to: 'products#search', as: 'search'
 
   get ':permalink', to: 'pages#permalink', as: 'permalink'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

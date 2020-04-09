@@ -1,12 +1,15 @@
-<%= render partial:'layouts/breadcrumb_nav', object: @product, locals: {href: '/products/', location_title: 'Products', show_product: false}%>
 <div class="search container">
   <%= render partial: 'products/search'%>
 </div>
 <div class="container">
   <h4 class="center-align">Products</h4>
   <% if @products.empty? %>
-    <p>There are no products available.</p>
+    <p>There are no products available for the search term "<%= params[:search_term] %>.</p>
   <% else %>
+    <p>
+      Search term "<%= params[:search_term] %>".
+    </p>
+    <%= page_entries_info @products, entry_name: 'item' %>
     <span class="right-align"><%= paginate @products, outer_window: 1, window: 2 %></span>
     <div class="row">
       <%= render partial: 'product', collection: @products %>
