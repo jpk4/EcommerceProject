@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :initialize_session
+  before_action :load_cart
+
   def index
     @products = Product.order(:name).page(params[:page])
   end
@@ -25,5 +28,27 @@ class ProductsController < ApplicationController
                 else
                   Product.where(created_at: (Time.now.midnight - 3.day)..(Time.now.midnight + 1.day)).page(params[:page])
                 end
+  end
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart] << id unless session[:cart].include?(id)
+    redirect_to '/products'
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:cart].delete(id)
+    redirect_to '/products'
+  end
+
+  private
+
+  def initialize_session
+    session[:cart] ||= []
+  end
+
+  def load_cart
+    @cart = Product.find(session[:cart])
   end
 end

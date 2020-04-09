@@ -9,6 +9,14 @@
     <p>There are no products in this category</p>
   <% else %>
     <div class="row">
+      <details>
+        <summary>Shopping Cart (<%= @cart.size %>)</summary>
+        <ul>
+          <% @cart.each do |cart_item| %>
+            <li><%= cart_item.name %> <%= link_to 'x', remove_from_cart_path(cart_item), method: :delete %></li>
+          <% end %>
+        </ul>
+      </details>
       <%= render partial: 'products/product', collection: @category.products %>
     </div>
   <% end %>
