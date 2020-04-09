@@ -6,7 +6,12 @@
     <div class="card-content">
       <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
       <div class="card-action">
-        <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
+        <% if product.sales_price.nil? %>
+          <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
+        <% else %>
+          <span class="sale">$<%= product.sales_price%> </span><%= product.size %>
+          <p class="grey-text text-lighten-1 right-align">Reg: $<%=product.current_price%></p>
+        <% end %>
       </div>
     </div>
   </div>

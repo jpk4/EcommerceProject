@@ -65,10 +65,22 @@ p a:hover {
   letter-spacing: 0.15rem;
 }
 
+.sale {
+  font-family: 'Shadows Into Light Two', cursive;
+  color:#f44336;
+  font-size: 1.25rem;
+  font-weight:bold;
+  letter-spacing: 0.15rem;
+}
+
 .products{
   padding: 0.5rem;
 }
 
 .btn-large {
   width: 100%;
+}
+
+.padding {
+  padding-top: 1rem;
 }
