@@ -1,9 +1,9 @@
 <%= render partial:'layouts/breadcrumb_nav', object: @product, locals: {href: '/products/', location_title: 'Products', show_product: false}%>
-<div class="search container">
+<h4 class="center-align">Products</h4>
+<div class="container">
   <%= render partial: 'products/search'%>
 </div>
 <div class="container">
-  <h4 class="center-align">Products</h4>
   <% if @products.empty? %>
     <p>There are no products available.</p>
   <% else %>

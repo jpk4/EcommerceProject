@@ -1,12 +1,18 @@
-<%= form_with(url: search_path, local: true, method: "get", class: 'search-form') do %>
-  <div class="file-field input-field">
-    <div>
-      <%= submit_tag("Search", class: "btn green lighten-1") %>
+<div class="row">
+  <%= form_with(url: search_path, local: true, method: "get", class: 'search-form col s12') do %>
+    <div class="row">
+      <div class="file-field input-group col s12">
+        <div class="file-path-wrapper col s6">
+          <%= text_field_tag(:search_term, nil, class: 'input', placeholder: 'Search Products') %>
+        </div>
+        <div class="col s4">
+          <%= select_tag "search_id", options_from_collection_for_select(Category.where.not(parent_category_id: nil).order(:name), "id", "name"), class: 'browser-default', prompt: "Filter By Category" %>
+        </div>
+        <div class="col s2">
+          <%= submit_tag("Search", class: "btn-large green lighten-1") %>
+        </div>
+      </div>
     </div>
-    <div class="file-path-wrapper">
-      <%= text_field_tag(:search_term, nil, class: 'input', placeholder: 'Search Products') %>
-      <%= select_tag "search_id", options_from_collection_for_select(Category.where.not(parent_category_id: nil).order(:name), "id", "name"), prompt: "Filter By Category" %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
