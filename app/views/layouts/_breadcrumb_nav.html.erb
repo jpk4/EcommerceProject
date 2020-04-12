@@ -40,7 +40,7 @@
           <% @cart.each do |cart_item| %>
             <tr>
               <td><%= cart_item.name %></td>
-              <td>1</td>
+              <td class="numfield"><%= number_field_tag(:qty, '1', min: 0)%></td>
               <td>$<%=cart_item.current_price%></td>
               <td><%= link_to 'Remove', remove_from_cart_path(cart_item), method: :delete %></td>
             </tr>
