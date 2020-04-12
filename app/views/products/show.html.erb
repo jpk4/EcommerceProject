@@ -28,7 +28,7 @@
             <% else %>
               <div class="row">
                 <div class="col s2">
-                  <%= number_field_tag(:qty, "1", class: "numfield")%>
+                  <%= number_field_tag(:qty, "1", min: 0, max: @product.qty_on_hand, class: "numfield")%>
                 </div>
                 <div class="col s2">
                   <%= button_to 'Add to Cart', add_to_cart_path(@product), method: :post, class: "btn green lighten-1" %>
