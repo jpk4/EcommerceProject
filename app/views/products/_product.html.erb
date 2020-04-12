@@ -2,15 +2,18 @@
   <div class="card index">
     <div class="card-image products">
       <%=image_tag product.image%>
-      <a class="btn-floating halfway-fab waves-effect waves-light green lighten-1 hoverable"><i class="material-icons">add_shopping_cart</i></a>
+      <% if @cart.include?(product)%>
+        <%=link_to remove_from_cart_path(product), method: :delete, class: "btn-floating halfway-fab waves-effect waves-light red hoverable" do %>
+          <i class="material-icons">remove_shopping_cart</i>
+        <% end %>
+      <% else %>
+        <%=link_to add_to_cart_path(product), method: :post, class: "btn-floating halfway-fab waves-effect waves-light green lighten-1 hoverable" do %>
+          <i class="material-icons">add_shopping_cart</i>
+        <% end %>
+      <% end %>
     </div>
     <div class="card-content cc">
       <p class="grey-text text-darken-4"><%= link_to product.name, product %></p>
-        <% if @cart.include?(product)%>
-        <%= button_to 'Remove From Cart', remove_from_cart_path(product), method: :delete %>
-        <% else %>
-        <%= button_to 'Add to Cart', add_to_cart_path(product), method: :post %>
-        <% end %>
     </div>
     <div class="card-action">
       <% if product.sales_price.nil? %>

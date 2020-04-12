@@ -23,6 +23,12 @@
             <p class="padding">SKU: <%= @product.sku %></p>
             <p class="padding">Description: <%= @product.description %></p>
             <p class="padding">In stock: <%= @product.qty_on_hand%></p>
+            <% if @cart.include?(@product)%>
+              <%= button_to 'Remove From Cart', remove_from_cart_path(@product), method: :delete %>
+            <% else %>
+              <%= number_field(:qty, step: 1)%>
+              <%= button_to 'Add to Cart', add_to_cart_path(@product), method: :post %>
+            <% end %>
           </div>
         </div>
       </div>
