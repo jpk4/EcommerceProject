@@ -1,4 +1,4 @@
-<%= render partial: 'layouts/breadcrumb_nav', object: @product, locals: {href: "/categories/#{@category.id}", location_title:  @category.name, show_product: true} %>
+<%= render partial: 'layouts/breadcrumb_nav', object: @product, locals: {href: "/categories/#{@category.id}", location_title:  @category.name, show_category: true, show_product: true} %>
 <div class="container">
   <%= render partial: 'products/search'%>
 </div>
