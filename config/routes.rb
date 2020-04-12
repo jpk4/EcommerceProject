@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources 'delivery_persons', only: %i[index]
   resources 'payments', only: %i[index]
   resources 'customers', only: %i[index]
-  resources 'orders', only: %i[index]
+  resources 'orders', only: %i[index new]
 
   get 'pages/show'
   get 'search', to: 'products#search', as: 'search'
