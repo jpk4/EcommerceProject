@@ -23,18 +23,18 @@
             <p class="padding">SKU: <%= @product.sku %></p>
             <p class="padding">Description: <%= @product.description %></p>
             <p class="padding">In stock: <%= @product.qty_on_hand%></p>
-            <% if @cart.include?(@product)%>
-              <%= button_to 'Remove From Cart', remove_from_cart_path(@product), method: :delete %>
-            <% else %>
               <div class="row">
                 <div class="col s2">
                   <%= number_field_tag(:qty, "1", min: 0, max: @product.qty_on_hand, class: "numfield")%>
                 </div>
                 <div class="col s2">
-                  <%= button_to 'Add to Cart', add_to_cart_path(@product), method: :post, class: "btn green lighten-1" %>
+                  <% if @cart.include?(@product)%>
+                    <%= button_to 'Remove From Cart', remove_from_cart_path(@product), method: :delete, class: "btn red" %>
+                  <% else %>
+                    <%= button_to 'Add to Cart', add_to_cart_path(@product), method: :post, class: "btn green lighten-1" %>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
           </div>
         </div>
       </div>
