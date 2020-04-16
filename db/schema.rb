@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_044433) do
+ActiveRecord::Schema.define(version: 2020_04_16_061634) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -64,10 +64,8 @@ ActiveRecord::Schema.define(version: 2020_04_09_044433) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
     t.integer "parent_category_id"
     t.index ["parent_category_id"], name: "index_categories_on_parent_category_id"
-    t.index ["parent_id"], name: "index_categories_on_parent_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -109,6 +107,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_044433) do
     t.integer "payment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "order_gst"
+    t.decimal "order_pst"
+    t.decimal "order_hst"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
   end
@@ -146,6 +147,16 @@ ActiveRecord::Schema.define(version: 2020_04_09_044433) do
     t.string "size"
     t.decimal "sales_price"
     t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.decimal "gst"
+    t.decimal "pst"
+    t.decimal "hst"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
