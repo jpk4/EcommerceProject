@@ -18,8 +18,8 @@ def random_numbers(size, upper)
   array = (1..upper).to_a.sample(size)
 end
 
-csv_file = Rails.root + 'db/groceries.csv'
-products = CSV.parse(File.read(csv_file), headers: true)
+csv_groceries = Rails.root + 'db/groceries.csv'
+products = CSV.parse(File.read(csv_groceries), headers: true)
 
 products.each do |product|
   parent = product['parent category']
@@ -47,5 +47,17 @@ on_sale_ids.each do |on_sale|
   product.update(sales_price: sales_price)
 end
 
+csv_provinces = Rails.root + 'db/provinces.csv'
+provinces = CSV.parse(File.read(csv_provinces), headers: true)
+
+provinces.each do |province|
+  name = province['name']
+  code = province['code']
+  gst = province['gst']
+  pst = province['pst']
+  hst = province['hst']
+
+  prov = Province.where(name: name, code: code, gst: gst, pst: pst, hst: hst).first_or_create
+end
 puts "Created #{Category.count} Categories."
 puts "Created #{Product.count} Products."
