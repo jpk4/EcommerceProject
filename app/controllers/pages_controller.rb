@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     else
       keys = session[:cart].keys
       @cart = Product.find(keys)
-   end
+    end
     redirect_to root_path if @page.nil?
   end
 end

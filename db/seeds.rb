@@ -57,7 +57,7 @@ provinces.each do |province|
   pst = province['pst']
   hst = province['hst']
 
-  prov = Province.where(name: name, code: code, gst: gst, pst: pst, hst: hst).first_or_create
+  Province.where(name: name, code: code, gst: gst, pst: pst, hst: hst).first_or_create
 end
 puts "Created #{Category.count} Categories."
 puts "Created #{Product.count} Products."
