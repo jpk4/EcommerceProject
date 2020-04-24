@@ -14,10 +14,15 @@ class CategoriesController < ApplicationController
   private
 
   def initialize_session
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def load_cart
-    @cart = Product.find(session[:cart])
+    if session[:cart].empty?
+      @cart = []
+    else
+      keys = session[:cart].keys
+      @cart = Product.find(keys)
+    end
   end
 end

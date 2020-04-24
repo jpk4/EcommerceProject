@@ -15,21 +15,31 @@
           <div class="card-content">
             <h5 class="header"><%= @product.name %></h5>
             <% if @product.sales_price.nil? %>
-              <span class="permfont">$<%= @product.current_price%> </span><%= @product.size %>
+              <span class="permfont">$<%= number_with_precision(@product.current_price, precision:2)%> </span><%= @product.size %>
             <% else %>
-              <span class="sale">$<%= @product.sales_price%> </span><%= @product.size %>
+              <span class="sale">$<%= number_with_precision(@product.sales_price, precision: 2)%> </span><%= @product.size %>
               <p class="grey-text text-lighten-1">Reg: $<%= @product.current_price%></p>
             <% end %>
             <p class="padding">SKU: <%= @product.sku %></p>
             <p class="padding">Description: <%= @product.description %></p>
             <p class="padding">In stock: <%= @product.qty_on_hand%></p>
               <div class="row">
-                <div class="col s2">
-                  <%= number_field_tag(:qty, "1", min: 0, max: @product.qty_on_hand, class: "numfield")%>
+                <div class="col s1">
+                  <%= number_field_tag(:qty, session[:cart]["#{@product.id}"] , min: 0, max: @product.qty_on_hand, class: "numfield", disabled: true)%>
                 </div>
-                <div class="col s2">
+                <div class="col s8">
                   <% if @cart.include?(@product)%>
-                    <%= button_to 'Remove From Cart', remove_from_cart_path(@product), method: :delete, class: "btn red" %>
+                    <div class="row">
+                      <div class="col s1">
+                        <%= button_to '+', add_quantity_path(@product.id), qty: session[:cart]["#{@product.id}"], method: :post, class: "btn grey lighten-1" %>
+                      </div>
+                      <div class="col s1">
+                        <%= button_to '-', remove_quantity_path(@product.id), method: :post, class: "btn grey" %>
+                      </div>
+                      <div class="col s4 offset-s1">
+                        <%= button_to 'Remove From Cart', remove_from_cart_path(@product), method: :delete, class: "btn red" %>
+                      </div>
+                    </div>
                   <% else %>
                     <%= button_to 'Add to Cart', add_to_cart_path(@product), method: :post, class: "btn green lighten-1" %>
                   <% end %>

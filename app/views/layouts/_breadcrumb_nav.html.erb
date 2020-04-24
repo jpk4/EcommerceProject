@@ -30,7 +30,7 @@
         <thead>
           <tr>
               <th>Product Name</th>
-              <th>Quantity</th>
+              <th>Qty</th>
               <th>Item Price</th>
               <th></th>
           </tr>
@@ -40,7 +40,7 @@
           <% @cart.each do |cart_item| %>
             <tr>
               <td><%= cart_item.name %></td>
-              <td class="numfield"><%= number_field_tag(:qty, '1', min: 0,  max: cart_item.qty_on_hand)%></td>
+              <td class="numfield"><%= number_field_tag(:qty, session[:cart]["#{cart_item.id}"], min: 0,  max: cart_item.qty_on_hand, disabled: true)%></td>
               <td>$<%=cart_item.current_price%></td>
               <td><%= link_to 'Remove', remove_from_cart_path(cart_item), method: :delete %></td>
             </tr>

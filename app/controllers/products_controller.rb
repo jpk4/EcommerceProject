@@ -31,24 +31,52 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    id = params[:id].to_i
-    session[:cart] << id unless session[:cart].include?(id)
+    id = params[:id]
+    @qty = 1
+    # session[:cart] << id unless session[:cart].include?(id)
+    if session[:cart].empty?
+      session[:cart] = { id => @qty } unless session[:cart].include?(id)
+    else
+      session[:cart][id] = @qty unless session[:cart].include?(id)
+    end
     redirect_to request.referrer
   end
 
   def remove_from_cart
-    id = params[:id].to_i
+    id = params[:id]
     session[:cart].delete(id)
+    redirect_to request.referrer
+  end
+
+  def add_quantity
+    id = params[:id]
+    @qty = session[:cart][id].to_i + 1
+    new_hash = { id => @qty }
+    session[:cart].merge!(new_hash)
+    redirect_to request.referrer
+  end
+
+  def remove_quantity
+    id = params[:id]
+    @qty = session[:cart][id].to_i - 1
+    new_hash = { id => @qty }
+    session[:cart].merge!(new_hash)
     redirect_to request.referrer
   end
 
   private
 
   def initialize_session
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def load_cart
-    @cart = Product.find(session[:cart])
+    if session[:cart].empty?
+      @cart = []
+    else
+      keys = session[:cart].keys
+      keys.map(&:to_i)
+      @cart = Product.find(keys)
+    end
   end
 end
