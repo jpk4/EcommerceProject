@@ -12,4 +12,14 @@ class OrdersController < ApplicationController
     end
     @province = Province.find_by(code: 'MB')
   end
+
+  def provincialtax
+    @province = Province.find(params[:province_id])
+    if session[:cart].empty?
+      @cart = []
+    else
+      keys = session[:cart].keys
+      @cart = Product.find(keys)
+    end
+  end
 end

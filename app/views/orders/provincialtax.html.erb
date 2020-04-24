@@ -28,8 +28,22 @@
           <% end %>
         </tbody>
       </table>
-      <h6 class="right-align">Subtotal: $<%= number_with_precision(subtotal, precision: 2) %></h6>
-      <%= render partial: 'orders/provincialtax'%>
+      <div class="row">
+        <div class="col s8">
+          <%= render partial: 'orders/provincialtax'%>
+        </div>
+        <div class="col s4">
+          <h6 class="right-align">Subtotal: $<%= number_with_precision(subtotal, precision: 2) %></h6>
+          <p class="right-align">GST (<%= @province.gst*100 %>%): $<%= number_with_precision(subtotal*@province.gst, precision: 2) %>
+          <% if @province.pst != 0 %>
+            <p class="right-align"><%= @province.code %> PST (<%= @province.pst*100 %>%): $<%= number_with_precision(subtotal*@province.pst, precision: 2) %>
+          <% end %>
+          <% if @province.hst != 0 %>
+            <p class="right-align"><%= @province.code %> HST (<%= @province.hst*100 %>%): $<%= number_with_precision(subtotal*@province.hst, precision: 2) %>
+          <% end %>
+          <h4 class="right-align">Total: $<%= number_with_precision(subtotal*(1 + @province.gst + @province.pst + @province.hst), precision: 2) %></h4>
+        </div>
+      </div>
     </div>
     <div class="col s3 offset-s1">
       <h5 class="center-align">Customer Details</h5>
