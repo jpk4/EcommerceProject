@@ -11,12 +11,13 @@ Rails.application.routes.draw do
   resources 'payments', only: %i[index]
   resources 'customers', only: %i[index]
   resources 'orders', only: %i[index new]
+  resources 'order_products', only: %i[show new]
 
   get 'pages/show'
   get 'provinces/index'
   get 'search', to: 'products#search', as: 'search'
   get 'filter', to: 'products#filter', as: 'filter'
-  get 'tax', to: 'orders#tax', as: 'tax'
+  get 'tax', to: 'order_products#tax', as: 'tax'
   post 'products/add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
   delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
   post 'products/add_quantity/:id', to: 'products#add_quantity', as: 'add_quantity'
