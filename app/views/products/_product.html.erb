@@ -17,10 +17,10 @@
     </div>
     <div class="card-action">
       <% if product.sales_price.nil? %>
-        <span class="permfont">$<%= product.current_price%> </span><%= product.size %>
+        <span class="permfont">$<%= number_with_precision(product.current_price, precision: 2)%> </span><%= product.size %>
       <% else %>
-        <span class="sale">$<%= product.sales_price%> </span><%= product.size %>
-        <p class="grey-text text-lighten-1 right-align">Reg: $<%=product.current_price%></p>
+        <span class="sale">$<%= number_with_precision(product.sales_price, precision: 2)%> </span><%= product.size %>
+        <p class="grey-text text-lighten-1 right-align">Reg: $<%= number_with_precision(product.current_price, precision: 2)%></p>
       <% end %>
     </div>
   </div>
