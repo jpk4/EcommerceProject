@@ -1,0 +1,58 @@
+<h3 class="center-align"> Checkout </h3>
+<div class="container checkout">
+  <div class="row">
+    <div class="col s7">
+      <%subtotal = 0%>
+      <table>
+        <thead>
+          <tr>
+              <th>Product Name</th>
+              <th>Qty</th>
+              <th>Item Price</th>
+              <th>Line Price</th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.name %></td>
+              <td><%= session[:cart]["#{cart_item.id}"] %></td>
+              <td>$<%=cart_item.current_price%></td>
+              <td>$<%=session[:cart]["#{cart_item.id}"]*cart_item.current_price %>
+              <td><%= link_to remove_from_cart_path(cart_item), method: :delete do %>
+                  <i class="material-icons">clear</i>
+              <% end %></td>
+            </tr>
+            <% subtotal = cart_item.current_price*session[:cart]["#{cart_item.id}"] + subtotal%>
+          <% end %>
+        </tbody>
+      </table>
+      <h6 class="right-align">Subtotal: $<%= number_with_precision(subtotal, precision: 2) %></h6>
+      <p class="right-align">GST (<%= @province.gst*100 %>%): $<%= number_with_precision(subtotal*@province.gst, precision: 2) %>
+      <% if @province.pst != 0 %>
+        <p class="right-align">PST (<%= @province.pst*100 %>%): $<%= number_with_precision(subtotal*@province.pst, precision: 2) %>
+      <% end %>
+      <% if @province.hst != 0 %>
+        <p class="right-align">HST (<%= @province.hst*100 %>%): $<%= number_with_precision(subtotal*@province.hst, precision: 2) %>
+      <% end %>
+      <h4 class="right-align">Total: $<%= number_with_precision(subtotal*(1 + @province.gst + @province.pst + @province.hst), precision: 2) %></h4>
+    </div>
+    <div class="col s3 offset-s1">
+      <h5 class="center-align">Customer Details</h5>
+      <%= form_with do %>
+        <%= text_field_tag(:name,  nil, class: 'input', placeholder: "Name")%>
+        <%= text_field_tag(:delivery_address, nil, class: 'input', placeholder: 'Street')%>
+        <div class="row">
+          <div class="col s8">
+            <%= text_field_tag(:city, nil, class: 'input', placeholder: 'City')%>
+          </div>
+          <div class="col s4">
+            <%= select_tag :province, options_from_collection_for_select(Province.where.not(id: nil).order(:name), "id", "code"), :include_blank => true, class: 'browser-default'%>
+          </div>
+        </div>
+        <%= submit_tag("Proceed To Payment", class: "btn green lighten-1")%>
+      <% end %>
+    </div>
+  </div>
+</div>
