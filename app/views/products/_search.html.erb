@@ -6,7 +6,7 @@
           <%= text_field_tag(:search_term, nil, class: 'input', placeholder: 'Search Products') %>
         </div>
         <div class="col s4">
-          <%= select_tag "search_id", options_from_collection_for_select(Category.where.not(parent_category_id: nil).order(:name), "id", "name"), class: 'browser-default', prompt: "Filter By Category" %>
+          <%= select_tag "search_id", options_from_collection_for_select(Category.where.not(parent_category_id: nil).order(:name), "id", "name", params[:search_id].to_i), class: 'browser-default', prompt: "Filter By Category" %>
         </div>
         <div class="col s2">
           <%= submit_tag("Search", class: "btn-large green lighten-1") %>

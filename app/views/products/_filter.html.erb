@@ -3,7 +3,7 @@
     <div class="row">
       <div class="file-field input-group col s12">
         <div class="col s6">
-          <%= select_tag "filter_id", options_for_select([['Sales Items Only', 1], ['New Items Only', 2]]), class: 'browser-default'%>
+          <%= select_tag "filter_id", options_for_select([['Sales Items Only', 1], ['New Items Only', 2]], params[:filter_id].to_i), class: 'browser-default'%>
         </div>
         <div class="col s6">
           <%= submit_tag("Search", class: "btn green lighten-1") %>
