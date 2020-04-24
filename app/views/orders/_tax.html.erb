@@ -1,12 +1,12 @@
 <div class="row">
-  <%= form_with(url: provincialtax_path, local: true, method: "get", class: 'search-form col s12') do %>
+  <%= form_with(url: tax_path, local: true, method: "get", class: 'search-form col s12') do %>
     <div class="row">
       <div class="file-field input-group col s12">
-        <div class="col s2">
+        <div class="col s3">
           <%= select_tag :province_id, options_from_collection_for_select(Province.where.not(id: nil).order(:name), "id", "code", params[:province_id].to_i), class: 'browser-default' %>
         </div>
-        <div class="col s3">
-          <%= submit_tag("Apply", class: "btn-large green lighten-1") %>
+        <div class="col s5">
+          <%= submit_tag("Apply Tax Rate", class: "btn-large green lighten-1") %>
         </div>
       </div>
     </div>

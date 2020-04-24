@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'provinces/index'
   get 'search', to: 'products#search', as: 'search'
   get 'filter', to: 'products#filter', as: 'filter'
-  get 'provincialtax', to: 'orders#provincialtax', as: 'provincialtax'
+  get 'tax', to: 'orders#tax', as: 'tax'
   post 'products/add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
   delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
   post 'products/add_quantity/:id', to: 'products#add_quantity', as: 'add_quantity'

@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     @province = Province.find_by(code: 'MB')
   end
 
-  def provincialtax
+  def tax
     @province = Province.find(params[:province_id])
     if session[:cart].empty?
       @cart = []

@@ -28,9 +28,9 @@
           <% end %>
         </tbody>
       </table>
-      <div class="row">
+      <div class="row valign-wrapper">
         <div class="col s8">
-          <%= render partial: 'orders/provincialtax'%>
+          <%= render partial: 'orders/tax'%>
         </div>
         <div class="col s4">
           <h6 class="right-align">Subtotal: $<%= number_with_precision(subtotal, precision: 2) %></h6>
@@ -55,7 +55,7 @@
             <%= text_field_tag(:city, nil, class: 'input', placeholder: 'City')%>
           </div>
           <div class="col s4">
-            <%= select_tag 'province_id', options_from_collection_for_select(Province.where.not(id: nil).order(:name), "id", "code"), :include_blank => true, class: 'browser-default'%>
+            <%= select_tag 'province_id', options_from_collection_for_select(Province.where.not(id: nil).order(:name), "id", "code", params[:province_id].to_i), :include_blank => true, class: 'browser-default'%>
           </div>
         </div>
         <%= submit_tag("Proceed To Payment", class: "btn green lighten-1")%>

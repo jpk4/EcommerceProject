@@ -29,23 +29,7 @@
         </tbody>
       </table>
       <h6 class="right-align">Subtotal: $<%= number_with_precision(subtotal, precision: 2) %></h6>
-      <%= render partial: 'orders/provincialtax'%>
-    </div>
-    <div class="col s3 offset-s1">
-      <h5 class="center-align">Customer Details</h5>
-      <%= form_with do %>
-        <%= text_field_tag(:name,  nil, class: 'input', placeholder: "Name")%>
-        <%= text_field_tag(:delivery_address, nil, class: 'input', placeholder: 'Street')%>
-        <div class="row">
-          <div class="col s8">
-            <%= text_field_tag(:city, nil, class: 'input', placeholder: 'City')%>
-          </div>
-          <div class="col s4">
-            <%= select_tag 'province_id', options_from_collection_for_select(Province.where.not(id: nil).order(:name), "id", "code"), :include_blank => true, class: 'browser-default'%>
-          </div>
-        </div>
-        <%= submit_tag("Proceed To Payment", class: "btn green lighten-1")%>
-      <% end %>
+      <%= render partial: 'orders/tax'%>
     </div>
   </div>
 </div>
