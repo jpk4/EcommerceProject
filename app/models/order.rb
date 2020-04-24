@@ -6,6 +6,6 @@ class Order < ApplicationRecord
   has_many :order_products
   has_many :products, through: :order_products
 
-  validates :order_num, :order_date, :customer, :payment, presence: true
-  validates :order_num, numericality: { only_integer: true }
+  validates :order_date, :customer, presence: true
+  # validates :order_num, numericality: { only_integer: true }
 end
